@@ -1,6 +1,6 @@
 # Agent-based Modeling Laboratory
 * Layout
-* Introduction
+* Introduction (intro.pptx)
 * Basics of NetLogo
 * Cases
 * Recap

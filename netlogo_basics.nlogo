@@ -53,7 +53,6 @@ to-report diffshops [a b]
   report (a - b)
 end
 
-random-seed
 @#$#@#$#@
 GRAPHICS-WINDOW
 210

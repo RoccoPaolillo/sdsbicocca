@@ -218,10 +218,10 @@ NIL
 1
 
 BUTTON
-204
-511
-281
-544
+62
+537
+139
+570
 NIL
 go
 T
@@ -252,10 +252,10 @@ NIL
 0
 
 SWITCH
-187
-30
-333
-63
+188
+21
+334
+54
 plot?
 plot?
 0
@@ -263,10 +263,10 @@ plot?
 -1000
 
 SWITCH
-187
-64
-333
-97
+188
+55
+334
+88
 layout?
 layout?
 0
@@ -302,10 +302,10 @@ NIL
 0
 
 BUTTON
-115
-102
-225
-135
+870
+79
+955
+112
 resize nodes
 resize-nodes
 NIL
@@ -319,42 +319,25 @@ NIL
 0
 
 SLIDER
-158
-547
-330
-580
+17
+573
+189
+606
 greens
 greens
 0
 1
-0.1
+0.5
 0.1
 1
 NIL
 HORIZONTAL
 
-BUTTON
-836
-81
-972
-114
-trianglebrand
-ask turtle 4 [\nset shape \"triangle\"\nask link-neighbors [set shape [shape] of myself]\n]\ntick
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
 SLIDER
-923
-367
-1095
-400
+931
+405
+1103
+438
 latitude_acceptance_out
 latitude_acceptance_out
 0
@@ -366,10 +349,10 @@ NIL
 HORIZONTAL
 
 BUTTON
-855
-163
-967
-196
+243
+534
+355
+567
 colordependent
 create-turtles 1\n  [\n  let col ifelse-value (random-float 1 < prob_green) [green][red]\n  let old-node find-partner-color col\n    set color [color] of old-node\n   set shape ifelse-value (color =  red) [\"triangle\"][\"square\"]\n     set opinion ifelse-value (color = red) [beta-random 0.6 0.2][beta-random 0.3 0.2]\n    if old-node != nobody\n      [ create-link-with old-node [ set color green ]\n        ;; position the new node near its partner\n        move-to old-node\n        fd 8\n      ]\n  ]\n \n  \n  \ntick\n  if layout? [ layout ]
 T
@@ -383,10 +366,10 @@ NIL
 1
 
 SLIDER
-923
-476
-1095
-509
+931
+514
+1103
+547
 weight_influence_in
 weight_influence_in
 0
@@ -398,10 +381,10 @@ NIL
 HORIZONTAL
 
 BUTTON
-836
-115
-975
-148
+847
+157
+986
+190
 propagate_shape_green
 ask one-of turtles with [color = green and shape = \"triangle\"] [\nask link-neighbors [ if shape != [shape] of myself\n [set shape [shape] of myself]]\n ]\ntick
 T
@@ -415,10 +398,10 @@ NIL
 1
 
 MONITOR
-1003
-256
-1060
-301
+1011
+294
+1068
+339
 green
 count turtles with [color = green]
 17
@@ -426,10 +409,10 @@ count turtles with [color = green]
 11
 
 MONITOR
-1064
-257
-1121
-302
+1072
+295
+1129
+340
 red
 count turtles with [color = red]
 17
@@ -437,25 +420,25 @@ count turtles with [color = red]
 11
 
 SLIDER
-829
-202
-1001
-235
+217
+572
+389
+605
 prob_green
 prob_green
 0
 1
-0.1
+0.5
 0.1
 1
 NIL
 HORIZONTAL
 
 PLOT
-1102
-309
-1302
-459
+1110
+347
+1310
+497
 plot 1
 NIL
 NIL
@@ -471,10 +454,10 @@ PENS
 "red" 1.0 0 -2674135 true "" "plot mean [opinion] of turtles with [color = red]"
 
 BUTTON
-1158
-470
-1254
-503
+1166
+508
+1262
+541
 updateopinion
 ask turtles [update-opinion]\n\ntick
 T
@@ -488,10 +471,10 @@ NIL
 1
 
 MONITOR
-1139
-254
-1199
-299
+1147
+292
+1207
+337
 greenop
 mean [opinion] of turtles with [color = green]
 3
@@ -499,10 +482,10 @@ mean [opinion] of turtles with [color = green]
 11
 
 MONITOR
-1204
-254
-1261
-299
+1212
+292
+1269
+337
 redop
 mean [opinion] of turtles with [color = red]
 3
@@ -510,10 +493,10 @@ mean [opinion] of turtles with [color = red]
 11
 
 PLOT
-1095
-22
-1295
-172
+1026
+45
+1226
+195
 triangles
 NIL
 NIL
@@ -529,10 +512,10 @@ PENS
 "red" 1.0 0 -2674135 true "" "plot count turtles with [color = red and shape = \"triangle\"] / count turtles with [shape = \"triangle\"]"
 
 PLOT
-1300
-23
-1500
-173
+1231
+46
+1431
+196
 squares
 NIL
 NIL
@@ -548,10 +531,10 @@ PENS
 "red" 1.0 0 -2674135 true "" "plot count turtles with [color = red and shape = \"square\"] / count turtles with [shape = \"square\"]"
 
 BUTTON
-961
-325
-1064
-358
+969
+363
+1072
+396
 show_opinion
 ask turtles [set size opinion * 5]
 T
@@ -565,10 +548,10 @@ NIL
 1
 
 SLIDER
-923
-441
-1095
-474
+931
+479
+1103
+512
 latitude_acceptance_in
 latitude_acceptance_in
 0
@@ -580,10 +563,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-922
-403
-1094
-436
+930
+441
+1102
+474
 weight_influence_out
 weight_influence_out
 0
@@ -594,8 +577,65 @@ weight_influence_out
 NIL
 HORIZONTAL
 
+TEXTBOX
+26
+502
+183
+532
+set probability of one node being green over red (also with setup)
+10
+0.0
+1
+
+TEXTBOX
+210
+500
+460
+528
+set probability of green nodes making new connections (on top of existing mechanisms) over red
+10
+0.0
+1
+
+BUTTON
+872
+120
+955
+153
+influencer
+; we know influencer is turtle 4 due to random-seed in setup\nask turtle 4 [\nset shape \"triangle\"\nask link-neighbors [set shape [shape] of myself]\n]\ntick
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+TEXTBOX
+853
+53
+973
+71
+strategy influencer
+14
+0.0
+1
+
+TEXTBOX
+1067
+262
+1217
+280
+opinion dynamics
+14
+0.0
+1
+
 @#$#@#$#@
-## WHAT IS IT?
+## WHAT IS IT? (In the original model)
 
 In some networks, a few "hubs" have lots of connections, while everybody else only has a few.  This model shows one way such networks can arise.
 
@@ -991,7 +1031,11 @@ repeat 100 [ layout ]
     <setup>setup</setup>
     <go>go</go>
     <metric>count turtles</metric>
-    <steppedValueSet variable="latitude_acceptance_out" first="0" step="0.5" last="1"/>
+    <enumeratedValueSet variable="latitude_acceptance_out">
+      <value value="0"/>
+      <value value="0.5"/>
+      <value value="1"/>
+    </enumeratedValueSet>
     <steppedValueSet variable="greens" first="0" step="0.5" last="1"/>
     <enumeratedValueSet variable="prob_green">
       <value value="0.1"/>

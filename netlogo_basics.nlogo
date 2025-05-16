@@ -24,12 +24,13 @@ to setup
 end
 
 
+
 to go
 
-  ; ask citizens [move influence]
+   ask citizens [move influence]
 
-  ask citizens [move]
-  ask citizens [influence]
+ ; ask citizens [move]
+ ; ask citizens [influence]
 
   tick
   ; if ticks = 100 [stop]
@@ -47,6 +48,12 @@ ask one-of citizens-on neighbors [
 set color [color] of myself]]
 
 end
+
+to-report diffshops [a b]
+  report (a - b)
+end
+
+random-seed
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
@@ -110,10 +117,10 @@ NIL
 1
 
 BUTTON
-844
-347
-923
-380
+816
+239
+895
+272
 influence
 ask one-of citizens [influence]\ntick
 T
@@ -176,7 +183,7 @@ number_shops
 number_shops
 0
 100
-10.0
+13.0
 1
 1
 NIL
@@ -198,13 +205,81 @@ NIL
 HORIZONTAL
 
 BUTTON
-723
-349
-835
-382
+695
+241
+807
+274
 move randomly
 ask citizens [ifelse not any? shops-on neighbors [fd 1 rt 360][]]
 T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+699
+286
+809
+319
+lists
+let a [1 3 5] \nprint (word \"complete list a: \" a)\n\nprint (word \"length list a: \" length a)\n\nlet b item 0 a \nprint (word \"item 0, i.e. first item list a: \" b)\n\nlet c [[1 2 4][2 5 6]]\nprint (word \"nested list c: \" c)\n\nlet d item 0 c\nprint (word \"item 0, i.e. first item nested list c: \" d)\n\n; add an item to a list using lput\nlet h lput 10 a\nprint h\n\nlet i [ 202 39 1 3]\nprint (word \"list i: \" i)\nprint (word \"show min value list i: \" min a) \nprint (word \"show max value list i: \" max a)\nprint (word \"sorted list i: \" sort a)\n\n\n; reduce: reports a single value applying the operation between all items of the list \nshow reduce + a \n; [ [a b] -> a + b] is the anonymous procedure running over the list [1 2 3 4]\nprint \"reduce command\"\nshow reduce [ [f g] -> f + g] [1 2 3 4] \n\n; map: apply the function for each item of the list\nprint \"map command\"\nshow map round [1.1 2.3 3.1 4.5]
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+817
+286
+934
+319
+anonymous procedure
+; anonymous procedure: runs a procedure for each element of a list\nforeach [1 3 4] [x -> show x + 1 ]\n
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+700
+331
+763
+364
+while
+let threshold 0\n\nwhile [threshold < 10] [\nset threshold threshold + 1\nprint threshold\n]
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+818
+328
+913
+361
+show report
+; one citizen is asked to use report for the difference\n; between yellow shops and green shops (report diffshops)\nask one-of citizens [\nset color yellow\nshow diffshops (count shops in-radius 4 with [color = yellow]) (count shops in-radius 4 with [color = green])\n]\n
+NIL
 1
 T
 OBSERVER
@@ -223,6 +298,8 @@ An example to show basics of programming logic in NetLogo
 
 Citizens with the shape of people have to move close to a shop if they are not already.
 When they are close to a shop, each agent at turn ask another agent to change color to their own. What happens with continuous interactions?
+
+What changes if the sequence of commands is [move influence] or [move][influence]
 
 ; isolates the pieces of code not used
 
